@@ -10,8 +10,8 @@
 <body>
     <header></header>
     <main>
-        <div id="mainXXXXX" class="wrapper">
-
+        
+        <div id="main" class="wrapper">
         </div>
     </main>
     <footer></footer>
@@ -23,21 +23,32 @@
         length:3
     }
     var hash = {
-        q: 'qq.com',
-        w: 'weibo.com',
-        e: 'ele.me',
-        r: 'rs05.com',
-        t: 'tianya.cn',
-        y: 'yy.com',
-        u: 'uc.cn',
-        i: 'iqiyi.com',
-        o: 'oppo.com',
-        p: 'pptv.com',
-        a: 'alibaba.com',
-        s: 'sohu.com',
-        d: 'douyu.com',
-        z: 'zhihu.com',
-        m: 'mcdonalds.com.cn'
+        q: 'www.qiniu.com',
+        w: 'www.weibo.com',
+        e: 'www.ele.me',
+        r: 'www.ruby-lang.org',
+        t: 'www.taobao.com',
+        y: 'www.yy.com',
+        u: 'www.uc.cn',
+        i: 'www.iqiyi.com',
+        o: 'www.oppo.com',
+        p: 'www.pptv.com',
+        a: 'www.alibaba.com',
+        s: 'sm.ms',
+        d: 'www.douyu.tv',
+        f: 'www.fineui.com',
+        g: 'www.google.com.hk',
+        h: 'www.huya.com',
+        j: 'js.jirengu.com',
+        k: 'www.kaikeba.com',
+        l: 'lol.qq.com',
+        z: 'www.zhihu.com',
+        x: 'xiedaimala.com',
+        c: 'www.chungold.com',
+        v: 'v.qq.com',
+        b: 'baidu.com',
+        n: 'ncback.win',
+        m: 'www.mcdonalds.com.cn'
     }
     //取出localstorage的uuu对应的hash
     var hashInLocalStorage = JSON.parse(localStorage.getItem('uuu')||'null')
@@ -45,31 +56,43 @@
         hash = hashInLocalStorage
     }
 
+    //遍历keys  生成kbd标签
     index = 0
-    while (index < keys['length']){
-        divXXXXX = document.createElement('div')
-        mainXXXXX.appendChild(divXXXXX)    
-        
+    while (index < keys['length']){   //0 1  2 
+        div = document.createElement('div')
+        main.appendChild(div)    
+        div.className = 'row'
         row = keys[index] //第一个数组 第二个数组 第三个数组
-        console.log(row)
 
         index2 = 0
         while(index2<row['length']){
-            kbdXXXXX = document.createElement('kbd')
-            kbdXXXXX.textContent = row[index2]
+            kbd = document.createElement('kbd')
+            span = document.createElement('span')
+            span.textContent = row[index2]
+            span.className = "text"
+            kbd.appendChild(span)
+            kbd.className='key'
             
-            buttonX = document.createElement('button') //创建编辑按钮
-            buttonX.textContent = '编辑'
-            buttonX.id = row[index2]
-            buttonX.onclick = function(xzkjcnxlkcjlk){
+            button = document.createElement('button') //创建编辑按钮
+            button.textContent = '编辑'
+            button.id = row[index2]
+            
+            imgXXXXX = document.createElement('img')
+            
+            if(hash[row[index2]]){
+            imgXXXXX.src = 'http://'+hash[row[index2]]+'/favicon.ico'
+            }else{
+                imgXXXXX.src="//i.loli.net/2017/11/10/5a05afbc5e183.png"
+            }
+            button.onclick = function(xzkjcnxlkcjlk){
                 key = xzkjcnxlkcjlk.target.id  //q w  e r 
                 x = prompt('请输入网址')
                 hash[key] = x  //hash变更
                 localStorage.setItem('uuu',JSON.stringify(hash))
             }
-
-            kbdXXXXX.appendChild(buttonX)
-            divXXXXX.appendChild(kbdXXXXX) 
+            kbd.appendChild(imgXXXXX)
+            kbd.appendChild(button)
+            div.appendChild(kbd) 
             index2++                   
         }
         index = index+1
@@ -79,7 +102,7 @@
         key = xzkjcnxlkcjlk['key']  // q w e r
         website = hash[key]
         
-        // location.href = 'http://'+website  //模拟用户在地址栏输入
+        // location.href = 'https://'+website  //模拟用户在地址栏输入
         window.open('http://'+website,'_blank')  //在窗口新打开
     }
     </script>
