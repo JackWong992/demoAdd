@@ -1,109 +1,101 @@
-html, body, section {
-  height: 100%;
+html,body,section {
+ height: 100%;
+ overflow: hidden;
 }
 .layout {
   margin: 0 auto;
   width: 600px;
 }
-@media(min-width: 700px){
-  .layout{
+@media (min-width: 700px) {
+  .layout {
     width: 600px;
   }
 }
-@media(min-width: 900px){
-  .layout{
+@media (min-width: 900px) {
+  .layout {
     width: 800px;
   }
 }
-@media(min-width: 1000px){
-  .layout{
+@media (min-width: 1000px) {
+  .layout {
     width: 900px;
   }
 }
-@media(min-width: 1200px){
-  .layout{
+@media (min-width: 1200px) {
+  .layout {
     width: 1100px;
   }
 }
 
-/* main 
-  1vh === .125px
-*/
+/* page area css */
+#page-cover {
+  display: none;
+}
 main {
   padding-top: 12vh;
-  height: calc(100% - 24vh);
+  height: calc(100% - 24vh); 
 }
-main::after {
+main::after{
   content: '';
-  clear: both;
   display: block;
+  clear: both;
 }
 main .aside {
   float: left;
-  /* border: 1px solid red; */
 }
-main .aside>figure {
+main .aside > figure{
   width: 46vh;
   height: 46vh;
-  background-image: url(https://images.unsplash.com/photo-1529966464641-ccc3988e5e4e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f7bcd259e421bf299499968529362455&auto=format&fit=crop&w=1567&q=80);
+  background-image: url(http://cloud.hunger-valley.com/music/public_tuijian_spring.jpg-middle);
   background-size: cover;
-  background-position: center center;
 }
 main .aside .actions {
   display: flex;
   margin-top: 4vh;
 }
-main .aside .iconfont {
+main .aside .iconfont{
   flex: 1;
   text-align: center;
   font-size: 5vh;
-  color: rgba(255, 255, 255, .4);
+  color: rgba(255,255,255,0.4);
   transition: color .4s;
   cursor: pointer;
 }
 main .aside .iconfont:hover{
   color: #fff;
 }
-
+main .aside .iconfont.active{
+  color: #ff5722;
+}
 main .detail {
-  margin-left: 55vh;
+  margin-left: 56vh;
   color: #fff;
-  /* border: 1px solid red; */
-  position: relative;
-  border: 1px solid #FFFACD;  
-  padding-left: 15px;
-  padding-right: 14px;
-  border-radius: 3px;
+  border: 1px dashed #F0FFF0;
+  padding: 2vh;
+  border-radius: 6px;
 }
-
-main .detail .tag {
+main .detail .tag{
   font-size: 2vh;
-  padding: .4em .7em;
+  padding: .4em .8em;
   background: #2e6eec;
-  border-radius: 2px;
-  /* position: absolute; */
-  display: inline-block;
-  margin-top: 1vh;
 }
-main .detail h1 {
+main .detail h1{
   font-size: 6vh;
-  margin-top: 4vh;
+  margin-top: 2vh;
 }
-main .icons {
+main .icons{
   display: flex;
   font-size: 3vh;
-  line-height: 3vh;
-  margin-top: 8vh;
+  margin-top: 12vh;
 }
 main .icons li{
   flex: 1;
 }
-main .icons .iconfont {
+main .icons .iconfont{
   font-size: 3vh;
-  line-height: 3vh;  
   margin-right: 1vh;
 }
-main .area-bar {
+main .area-bar{
   margin-top: 10vh;
   display: flex;
   align-items: center;
@@ -113,16 +105,14 @@ main .area-bar .bar{
   flex: 1;
   height: .8vh;
   border-radius: .2vh;
-  background: rgba(255,255,255,.4);
+  background: rgba(255, 255, 255, 0.4);
 }
-
-main .area-bar .current-time {
+main .area-bar .current-time{
   width: 3vh;
   font-size: 2vh;
   margin-left: 1vh;
 }
-
-main .area-bar .bar-progress {
+main .area-bar .bar-progress{
   position: absolute;
   height: .8vh;
   width: 0%;
@@ -130,19 +120,38 @@ main .area-bar .bar-progress {
   background-color: #fff;
   border-radius: .2vh;
 }
-
 main .author {
-  font-size: 3vh;
-  margin-top: 1vh;
-  color: rgba(255,255,255,.7);
+  font-size: 2vh;
+  margin-top: 2vh;
+  color: rgba(255, 255, 255, 0.6);
 }
 main .lyric {
   font-size: 3vh;
   margin-top: 3vh;
-  margin-bottom: 3vh;
-  color: #fff;
+  color: 	Crimson;
 }
-/* footer */
+/* bg area css */
+.bg {
+  position: absolute;
+  z-index: -1;
+  left: -10px;
+  top: -10px;
+  bottom: -10px;
+  right: -10px;
+  background: url(http://cloud.hunger-valley.com/music/public_tuijian_spring.jpg-big) center center no-repeat;
+  background-size: cover;
+  filter: blur(4px);
+}
+.bg::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0,0,0,0.4);  
+}
+/* footer area css */
 footer {
   height: 24vh;
   color: #fff;
@@ -160,7 +169,6 @@ footer .box {
 footer ul{
   position: absolute;
   left: 0;
-  display: flex;
 }
 footer ul:after {
   content: '';
@@ -170,10 +178,9 @@ footer ul:after {
 footer li{
   float: left;
   margin-top: 1vh;
-  margin: 2vh 2vh 0 4.5vh;
+  margin: 2vh 2vh 0 2vh;
   width: 20vh;
   height: 20vh;
-
   text-align: center;
   cursor: pointer;
 }
@@ -192,7 +199,6 @@ footer h3{
 }
 footer li.active {
   box-shadow: 0 0 .5vh .5vh rgba(255,255,255,0.8);
-
 }
 
 footer .iconfont {
@@ -212,39 +218,14 @@ footer .iconfont:hover {
 }
 footer .icon-left {
   left: -8vh;
-  margin-top: 4vh;
+  margin: 2vh 0  0  -3vh;
 }
 footer .icon-right {
   right: -8vh;
-  margin-top: 4vh;
+  margin-right: -5vh; 
+  margin-top: 2vh;
 }
-footer .box li .cover {
-  background-image: url(https://images.unsplash.com/photo-1529966464641-ccc3988e5e4e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f7bcd259e421bf299499968529362455&auto=format&fit=crop&w=1567&q=80);
-}
-
-
-/* section-2 area */
-#page-cover {
-  display: none;
-}
-/* bg area */
-.bg {
-  position: absolute;
-  z-index: -1;
-  left: -10px;
-  top: -10px;
-  bottom: -10px;
-  right: -10px;
-  background: url(https://images.unsplash.com/photo-1529966464641-ccc3988e5e4e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f7bcd259e421bf299499968529362455&auto=format&fit=crop&w=1567&q=80) no-repeat center center;
-  background-size: cover;
-  filter: blur(4px);
-}
-.bg::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  background: rgba(0,0,0,.4);
+.boomText{
+  opacity: 0;
+  display: inline-block;
 }
